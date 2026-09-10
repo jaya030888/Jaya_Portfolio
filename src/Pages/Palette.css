@@ -1,0 +1,47 @@
+/* Exact colors imported from the supplied Figma/Adobe/Sketch palette. */
+:root{
+  --palette-black:#080909;
+  --palette-white:#FFFFFF;
+  --palette-yellow:#FFD24A;
+  --palette-orange:#F9A220;
+  --palette-hot-pink:#FD48F2;
+  --palette-cyan:#1CE8ED;
+  --palette-purple:#32225F;
+  --palette-indigo:#3D3195;
+  --palette-green:#6ABF4C;
+  --palette-red:#C13A1F;
+  --palette-cream:#FAED8F;
+  --palette-light-pink:#FEB6FA;
+  --palette-deep-red:#71002E;
+  --ink:var(--palette-black);
+  --paper:var(--palette-cream);
+  --coral:var(--palette-hot-pink);
+  --teal:var(--palette-cyan);
+  --gold:var(--palette-yellow);
+}
+
+body,.monthly,.faq{background:var(--palette-white)}
+.hero{background:var(--palette-yellow)}
+.hero-wave{background:var(--palette-orange)}
+.how,.gift-box{background:var(--palette-indigo)}
+.genre-zone,.menu-panel{background:var(--palette-hot-pink)}
+.why,.about-intro,.modal-card{background:var(--palette-cream)}
+.experience,footer{background:var(--palette-black)}
+.testimonials,.hero-teal{background:var(--palette-cyan)}
+.education-card{background:var(--palette-green)}
+.soft-skills,.gift{background:var(--palette-yellow)}
+.journey{background:var(--palette-hot-pink)}
+.portrait-frame,.book-box{background:var(--palette-purple)}
+.book-spine,.ribbon{background:var(--palette-hot-pink)}
+.portrait-shadow{background:var(--palette-deep-red);box-shadow:10px 10px var(--palette-red)}
+.book-box{box-shadow:-14px 14px 0 var(--palette-hot-pink),8px 13px 10px #08090966}
+.book-spine{box-shadow:-7px 7px var(--palette-deep-red)}
+.box-mark{color:var(--palette-light-pink);border-color:var(--palette-light-pink)}
+.nav-cta{background:var(--palette-orange);color:var(--palette-black)}
+.pink-button{background:var(--palette-hot-pink);color:var(--palette-white)}
+.black-button,.socials a,.mobile-menu{background:var(--palette-black);color:var(--palette-white)}
+.project-card:hover .project-glyph{background:#FFFFFF33}
+.modal-card code{background:var(--palette-black);color:var(--palette-cyan)}
+.assistant-answer,.quote-row article{background:var(--palette-white)}
+.prompt-chips button{background:var(--palette-yellow);border-color:var(--palette-black)}
+.prompt-chips button:hover{background:var(--palette-hot-pink)}
