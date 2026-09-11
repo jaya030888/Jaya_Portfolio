@@ -1,36 +1,32 @@
-import React, { useEffect } from 'react';
-import Home from './Pages/Home';
-import Lenis from '@studio-freight/lenis';
-import './index.css';
+import { useState } from 'react'
+import './App.css'
 
-function App() {
-  useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-    });
+const books = [
+  { title: 'Mazywood', tags: ['Historical', 'Horror', 'Includes a Dog'], description: 'All the Sinners Bleed meets Erasure in this literary thriller from the award-winning author of The Reformatory.', image: '/aardvark/mazywood.png', color: '#38265d' },
+  { title: 'Crone', tags: ['Horror'], description: 'A haunting, fearsome story of a father searching for his missing daughter and finding darkness at every turn.', image: '/aardvark/crone.png', color: '#6dc83b' },
+  { title: 'The Secret Dinner', tags: ['Translated', 'Horror', 'Thriller'], description: 'Four childhood friends swap rural Brazil for the big city, with no idea of the fate awaiting them.', image: '/aardvark/secret-dinner.png', color: '#050505' },
+  { title: 'Blacktail', tags: ['Fantasy', 'Includes a Dog'], description: 'A one-of-a-kind dark fantasy in which a wolf sets out on an epic journey of revenge.', image: '/aardvark/blacktail.png', color: '#d85126' },
+  { title: 'Scion', tags: ['Sci-Fi'], description: 'John Wick meets Ghost in the Shell in this fast-paced cyberpunk thriller.', image: '/aardvark/scion.png', color: '#102c62' },
+  { title: 'Fruit Fly', tags: ['Literary', 'Thriller', 'Satire'], description: 'A washed-up author will stop at nothing to claw her way back to relevancy.', image: '/aardvark/fruit-fly.png', color: '#b9e827' },
+]
+function Arrow() { return <span aria-hidden="true">↗</span> }
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-
-    requestAnimationFrame(raf);
-
-    return () => {
-      lenis.destroy();
-    };
-  }, []);
-
-  return (
-    <div className="App">
-      <Home />
-    </div>
-  );
+export default function App() {
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [activeFaq, setActiveFaq] = useState<number | null>(0)
+  return <main>
+    <header className="nav"><a className="brand" href="#top"><img src="/aardvark/logo.svg" alt="Aardvark Book Club" /></a><nav className={menuOpen ? 'open' : ''}><a href="#books" onClick={() => setMenuOpen(false)}>All Books</a><a href="#gifts" onClick={() => setMenuOpen(false)}>Gifting</a><a href="#faq" onClick={() => setMenuOpen(false)}>FAQ</a><a className="login" href="#join">Log-in / Sign-up <Arrow /></a></nav><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
+    <section className="hero" id="top"><div className="hero-shapes" /><div className="hero-copy"><h1>Unbox stories<br />worth talking<br />about</h1><p>Join the book club that’s anything but traditional. Choose up to 3 new reads every month, delivered to your door. Then dive into the stories, and the conversations.</p><a href="#join" className="button hero-cta">Log-in / Sign-up now <Arrow /></a></div><div className="hero-volume" aria-label="Aardvark Book Club book"><i /><b>✦</b></div><div className="scribble hero-scribble">Shipping to<br />the USA &<br />Canada</div></section>
+    <section className="monthly" id="books"><div className="section-intro"><div className="scribble discover">Discover hidden gems</div><div><h2>Our Sept books</h2><p>We drop new books on the 1st of every month.<br />Call us creatures of habit.</p></div></div><div className="book-grid">{books.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}><img src={book.image} alt={book.title} /><div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
+    <section className="works"><div className="works-head"><div><p className="eyebrow">HOW IT WORKS</p><h2>Good books,<br />zero guesswork.</h2></div><p>Consider us your professional book curator.</p></div><div className="steps">{[
+      ['Step #1','Explore our books','The first of every month we reveal 6–7 new books. Follow us on social to keep an eye on any hints we may post.','/aardvark/step-1.webp'],
+      ['Step #2','Build your box','Members can order up to 3 books per box. At least one title must be from the current month’s selections.','/aardvark/step-2.webp'],
+      ['Step #3','Check your doorstop','Your box is delivered right to your doorstep. This is the best excuse to cancel Friday night plans.','/aardvark/step-3.webp'],
+      ['Step #4','Share your reads','Share your box and tag us @aardvarkbook or participate in Club discussions in-app!','/aardvark/step-4.webp'],
+    ].map(([number,title,copy,art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div><a className="button cream" href="#join">BECOME A MEMBER <Arrow /></a></section>
+    <section className="box-section" id="join"><div className="box-copy"><p className="eyebrow">WHY AARDVARK?</p><h2>The book club<br />with <em>bite.</em></h2><p>We’re for finding the unexpected, sharing the excitement, and keeping your TBR from getting boring.</p><div className="perks"><span>Range of genres</span><span>Free shipping</span><span>Affordable</span><span>Hardcovers</span></div><a className="button pink" href="#faq">BECOME A MEMBER <Arrow /></a></div><img src="/aardvark/package.webp" alt="Colourful Aardvark Book Club package" /></section>
+    <section className="faq" id="faq"><div><p className="eyebrow">COMMON QUESTIONS</p><h2>We’ve got<br />answers.</h2><img src="/aardvark/party.webp" alt="" /></div><div className="faq-list">{[['How much does membership cost?', 'Membership starts at $17.99 USD/month in the USA and includes one book. Extra books are $10.99 each.'],['What countries does Aardvark ship to?', 'We currently ship throughout the USA and Canada.'],['How do I join Aardvark?', 'Sign up, pick your first book, and build your very first box.']].map(([q,a],i) => <article className={activeFaq === i ? 'expanded' : ''} key={q}><button onClick={() => setActiveFaq(activeFaq === i ? null : i)}>{q}<b>{activeFaq === i ? '−' : '+'}</b></button><p>{a}</p></article>)}</div></section>
+    <section className="gift" id="gifts"><div><p className="eyebrow">A GIFT OUTSIDE THE BOX</p><h2>Give them<br />a plot twist.</h2><p>Gift a subscription and they can pick their own books. No spying on shelves needed.</p><a href="#join" className="button dark">SHOP GIFTS <Arrow /></a></div><div className="gift-card"><span>FOR<br />BOOK<br />PEOPLE</span><i>✦</i></div></section>
+    <footer><img src="/aardvark/logo.svg" alt="Aardvark Book Club" /><div><p className="eyebrow">JOIN OUR MAILING LIST</p><div className="email"><input placeholder="Email address" aria-label="Email address" /><button>→</button></div></div><p className="copyright">© 2026 Aardvark Book Club. All rights reserved.</p></footer>
+  </main>
 }
-
-export default App;
