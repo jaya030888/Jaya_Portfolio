@@ -77,8 +77,7 @@ export default function App() {
       ['Step #3', 'Figure it out.', 'The messy part. Read docs, debug, ask questions, and slowly put the puzzle back together.', '/aardvark/step-3.webp'],
       ['Step #4', 'Build again.', 'Take everything learned and build it better, stronger, and more thoughtfully this time.', '/aardvark/step-4.webp'],
     ].map(([number, title, copy, art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
-    <section className="box-section" id="talk"><div className="box-copy"><p className="eyebrow">WHAT'S NEXT?</p><h2>The space where<br />technology meets <em>people.</em></h2><p>I'm still exploring where all of that leads. AI. Software. Design. Digital experiences. Research. Marketing. Real-world problems.</p><div className="perks"><span>AI</span><span>Software</span><span>Design</span><span>Research</span><span>Marketing</span></div><a className="button pink" href="#contact">LET'S BUILD SOMETHING <Arrow /></a></div></section>
-    
+
     <section className="monthly testimonials-section" id="testimonials">
       <div className="section-intro">
         <div className="scribble discover kind-words">Kind words</div>
