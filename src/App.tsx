@@ -33,6 +33,37 @@ export default function App() {
   return <main>
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}><a className="brand" href="#top" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}><div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#080909', color: '#F9A220', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '20px' }}>J</div><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}><span style={{ fontWeight: 900, fontSize: '24px', lineHeight: 1, color: '#080909' }}>Jaya Patel</span><span style={{ fontSize: '12px', color: 'rgba(8,9,9,0.7)', fontWeight: 700, letterSpacing: '0.05em', fontFamily: 'var(--font-script, "Gochi Hand", cursive)' }}>Full Stack Developer</span></div></a><nav className={menuOpen ? 'open' : ''}><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a href="#process" onClick={() => setMenuOpen(false)}>Process</a><a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav><a className="login" href="#contact">Let's Talk <Arrow /></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
     <section className="hero" id="hero"><div className="hero-shapes" /><div className="hero-copy"><h1>WORK.<br />Things I've<br />built.</h1><p>Things I'm building. Things I'm still figuring out. I don't have a perfectly linear path. I've built websites, cloned products, experimented with full-stack systems, worked with APIs, and explored AI. This is a collection of that journey.</p><a href="#chapters" className="button hero-cta">See my work <Arrow /></a></div><div className="hero-volume" aria-label="Jaya Portfolio Story"><i /><b>✦</b></div><div className="scribble hero-scribble">My Dev<br />Story</div></section>
+    
+    <section className="monthly" id="about" style={{ paddingBottom: '60px' }}>
+      <div className="section-intro">
+        <div className="scribble discover">Who am I?</div>
+        <div>
+          <h2>About Me</h2>
+          <p style={{ maxWidth: '600px', margin: '20px auto 0' }}>I'm a full stack developer passionate about creating digital experiences that are intuitive, accessible, and meaningful. I love bridging the gap between complex engineering and elegant, user-friendly design.</p>
+        </div>
+      </div>
+    </section>
+
+    <section className="box-section" id="services" style={{ background: '#fbdcff', display: 'block', paddingBottom: '80px' }}>
+      <div className="section-intro" style={{ textAlign: 'center', marginBottom: '50px' }}>
+        <h2>Services I Offer</h2>
+        <p>What I bring to the table.</p>
+      </div>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', maxWidth: '1000px', margin: '0 auto' }}>
+        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
+          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>Web Development</h3>
+          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Building fast, responsive, and accessible websites using modern frameworks and standard web practices.</p>
+        </article>
+        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
+          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>Backend Systems</h3>
+          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Designing robust APIs, managing databases, and ensuring scalable server architectures.</p>
+        </article>
+        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
+          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>UI/UX Design</h3>
+          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Crafting user-centric interfaces that communicate clearly and guide users naturally.</p>
+        </article>
+      </div>
+    </section>
     <section className="monthly" id="chapters" style={{ paddingBottom: '30px' }}><div className="section-intro"><div className="scribble discover">What's cooking</div><div><h2>Currently Building</h2><p>Projects I am actively working on right now.<br />Exploring the intersection of tech and people.</p></div></div><div className="book-grid">{currentlyBuilding.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{book.video ? <video src={book.video} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
     <section className="monthly" style={{ paddingTop: '30px', paddingBottom: '30px' }}><div className="section-intro"><div><h2>Built & Shipped</h2><p>Projects completed and deployed.<br />Designing for trust and creating full systems.</p></div></div><div className="book-grid">{builtAndShipped.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
     <section className="monthly" style={{ paddingTop: '30px' }}><div className="section-intro"><div><h2>Built To Learn</h2><p>Some projects weren't about building the next big product.<br />They were about figuring something out.</p></div></div><div className="book-grid">{builtToLearn.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
