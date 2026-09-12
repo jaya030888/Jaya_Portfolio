@@ -142,12 +142,30 @@ export default function App() {
         <button type="submit" className="button pink" style={{ width: '100%' }}>SEND VIA WHATSAPP <Arrow /></button>
       </form>
     </section>
-    <footer><h2 style={{ fontSize: '32px', margin: 0 }}>Jaya Patel</h2><div><p className="eyebrow">LET'S CONNECT</p><form className="email" onSubmit={(e) => {
-      e.preventDefault();
-      const fd = new FormData(e.currentTarget);
-      const email = fd.get('email') || '';
-      const text = `Hi Jaya! I'd like to connect. My email is: ${email}`;
-      window.open(`https://wa.me/917209892701?text=${encodeURIComponent(text)}`, '_blank');
-    }}><input name="email" type="email" placeholder="Email address" aria-label="Email address" required /><button type="submit">→</button></form></div><p className="copyright">© 2026 Jaya Patel. All rights reserved.</p></footer>
+    <footer>
+      <div className="footer-content" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', maxWidth: '1200px', flexWrap: 'wrap', gap: '40px' }}>
+        <div className="footer-left" style={{ textAlign: 'left' }}>
+          <h2 style={{ fontSize: 'clamp(32px, 5vw, 64px)', margin: 0, textTransform: 'uppercase' }}>Jaya Patel</h2>
+        </div>
+        <div className="footer-right" style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', minWidth: '300px' }}>
+          <p className="eyebrow" style={{ textAlign: 'left', marginBottom: '20px' }}>LET'S CONNECT</p>
+          <div className="social-links" style={{ display: 'flex', gap: '15px' }}>
+            <a href="mailto:hello@jayapatel.com" target="_blank" rel="noreferrer" aria-label="Email" style={{ display: 'inline-flex', padding: '12px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', color: '#fff', transition: 'all 0.2s', border: '1px solid rgba(255,255,255,0.2)' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+            <a href="https://wa.me/917209892701" target="_blank" rel="noreferrer" aria-label="WhatsApp" style={{ display: 'inline-flex', padding: '12px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', color: '#fff', transition: 'all 0.2s', border: '1px solid rgba(255,255,255,0.2)' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noreferrer" aria-label="LinkedIn" style={{ display: 'inline-flex', padding: '12px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', color: '#fff', transition: 'all 0.2s', border: '1px solid rgba(255,255,255,0.2)' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub" style={{ display: 'inline-flex', padding: '12px', background: 'rgba(255,255,255,0.1)', borderRadius: '50%', color: '#fff', transition: 'all 0.2s', border: '1px solid rgba(255,255,255,0.2)' }} onMouseOver={e => e.currentTarget.style.background = 'rgba(255,255,255,0.2)'} onMouseOut={e => e.currentTarget.style.background = 'rgba(255,255,255,0.1)'}>
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <p className="copyright" style={{ marginTop: '70px', width: '100%' }}>© 2026 Jaya Patel. All rights reserved.</p>
+    </footer>
   </main>
 }
