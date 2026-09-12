@@ -34,33 +34,37 @@ export default function App() {
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}><a className="brand" href="#top" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}><div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#080909', color: '#F9A220', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '20px' }}>J</div><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}><span style={{ fontWeight: 900, fontSize: '24px', lineHeight: 1, color: '#080909' }}>Jaya Patel</span><span style={{ fontSize: '12px', color: 'rgba(8,9,9,0.7)', fontWeight: 700, letterSpacing: '0.05em', fontFamily: 'var(--font-script, "Gochi Hand", cursive)' }}>Full Stack Developer</span></div></a><nav className={menuOpen ? 'open' : ''}><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a href="#process" onClick={() => setMenuOpen(false)}>Process</a><a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav><a className="login" href="#contact">Let's Talk <Arrow /></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
     <section className="hero" id="hero"><div className="hero-shapes" /><div className="hero-copy"><h1>WORK.<br />Things I've<br />built.</h1><p>Things I'm building. Things I'm still figuring out. I don't have a perfectly linear path. I've built websites, cloned products, experimented with full-stack systems, worked with APIs, and explored AI. This is a collection of that journey.</p><a href="#chapters" className="button hero-cta">See my work <Arrow /></a></div><div className="hero-volume" aria-label="Jaya Portfolio Story"><i /><b>✦</b></div><div className="scribble hero-scribble">My Dev<br />Story</div></section>
     
-    <section className="monthly" id="about" style={{ paddingBottom: '60px' }}>
+    <section className="monthly about-section" id="about">
       <div className="section-intro">
         <div className="scribble discover">Who am I?</div>
         <div>
           <h2>About Me</h2>
-          <p style={{ maxWidth: '600px', margin: '20px auto 0' }}>I'm a full stack developer passionate about creating digital experiences that are intuitive, accessible, and meaningful. I love bridging the gap between complex engineering and elegant, user-friendly design.</p>
+          <p className="about-text">I'm a full stack developer passionate about creating digital experiences that are intuitive, accessible, and meaningful. I love bridging the gap between complex engineering and elegant, user-friendly design.</p>
         </div>
       </div>
     </section>
 
-    <section className="box-section" id="services" style={{ background: '#fbdcff', display: 'block', paddingBottom: '80px' }}>
-      <div className="section-intro" style={{ textAlign: 'center', marginBottom: '50px' }}>
+    <section className="box-section services-section" id="services">
+      <div className="section-intro center-intro">
         <h2>Services I Offer</h2>
         <p>What I bring to the table.</p>
       </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', maxWidth: '1000px', margin: '0 auto' }}>
-        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
-          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>Web Development</h3>
-          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Building fast, responsive, and accessible websites using modern frameworks and standard web practices.</p>
+      <div className="services-grid">
+        <article className="service-card">
+          <h3>Web Development</h3>
+          <p>Building fast, responsive, and accessible websites using modern frameworks and standard web practices.</p>
         </article>
-        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
-          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>Backend Systems</h3>
-          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Designing robust APIs, managing databases, and ensuring scalable server architectures.</p>
+        <article className="service-card">
+          <h3>Backend Systems</h3>
+          <p>Designing robust APIs, managing databases, and ensuring scalable server architectures.</p>
         </article>
-        <article style={{ background: '#fff', padding: '30px', borderRadius: '20px', border: '2px solid var(--ink)', boxShadow: '6px 6px 0 var(--ink)' }}>
-          <h3 style={{ fontSize: '24px', margin: '0 0 10px' }}>UI/UX Design</h3>
-          <p style={{ fontSize: '14px', lineHeight: '1.4', margin: 0, fontWeight: 500 }}>Crafting user-centric interfaces that communicate clearly and guide users naturally.</p>
+        <article className="service-card">
+          <h3>UI/UX Design</h3>
+          <p>Crafting user-centric interfaces that communicate clearly and guide users naturally.</p>
+        </article>
+        <article className="service-card">
+          <h3>Open to Anything</h3>
+          <p>Digital marketing, content creation, or just a weird experiment? I'm open to learning and trying new things. Let's talk!</p>
         </article>
       </div>
     </section>
@@ -73,8 +77,64 @@ export default function App() {
       ['Step #3', 'Figure it out.', 'The messy part. Read docs, debug, ask questions, and slowly put the puzzle back together.', '/aardvark/step-3.webp'],
       ['Step #4', 'Build again.', 'Take everything learned and build it better, stronger, and more thoughtfully this time.', '/aardvark/step-4.webp'],
     ].map(([number, title, copy, art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div><a className="button cream" href="#talk">LET'S TALK <Arrow /></a></section>
-    <section className="box-section" id="talk"><div className="box-copy"><p className="eyebrow">WHAT'S NEXT?</p><h2>The space where<br />technology meets <em>people.</em></h2><p>I'm still exploring where all of that leads. AI. Software. Design. Digital experiences. Research. Marketing. Real-world problems.</p><div className="perks"><span>AI</span><span>Software</span><span>Design</span><span>Research</span><span>Marketing</span></div><a className="button pink" href="#gifts">LET'S BUILD SOMETHING <Arrow /></a></div><img src="/aardvark/package.webp" alt="Colourful Aardvark Book Club package" /></section>
-    <section className="gift" id="gifts"><div><p className="eyebrow">LET'S BUILD SOMETHING</p><h2>Have an idea?</h2><p>A project? A weird experiment? A problem worth solving? I'd love to talk.</p><a href="mailto:hello@example.com" className="button dark">SAY HELLO <Arrow /></a></div><div className="gift-card"><span>LET'S<br />TALK<br />SOON</span><i>✦</i></div></section>
+    <section className="box-section" id="talk"><div className="box-copy"><p className="eyebrow">WHAT'S NEXT?</p><h2>The space where<br />technology meets <em>people.</em></h2><p>I'm still exploring where all of that leads. AI. Software. Design. Digital experiences. Research. Marketing. Real-world problems.</p><div className="perks"><span>AI</span><span>Software</span><span>Design</span><span>Research</span><span>Marketing</span></div><a className="button pink" href="#contact">LET'S BUILD SOMETHING <Arrow /></a></div><img src="/aardvark/package.webp" alt="Colourful Aardvark Book Club package" /></section>
+    
+    <section className="monthly testimonials-section" id="testimonials">
+      <div className="section-intro">
+        <div className="scribble discover kind-words">Kind words</div>
+        <div>
+          <h2>Testimonials</h2>
+          <p>What people say about working with me.</p>
+        </div>
+      </div>
+      <div className="testimonials-grid">
+        <div className="testimonial-card">
+          <p>"Jaya has an incredible eye for detail. They took our complex requirements and turned them into a seamless, intuitive experience. Highly recommended!"</p>
+          <div className="testimonial-author">
+            <div className="avatar avatar-1"></div>
+            <div>
+              <h4>Sarah Jenkins</h4>
+              <span>Product Manager, TechCorp</span>
+            </div>
+          </div>
+        </div>
+        <div className="testimonial-card">
+          <p>"Working with Jaya was a breeze. They don't just write code, they deeply understand the user and the business goals behind the product."</p>
+          <div className="testimonial-author">
+            <div className="avatar avatar-2"></div>
+            <div>
+              <h4>Marcus Thorne</h4>
+              <span>Founder, StartupX</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="box-section contact-section" id="contact">
+      <div className="contact-header">
+        <p className="eyebrow">LET'S BUILD SOMETHING</p>
+        <h2>Let's work together.</h2>
+        <p>Have an idea? A project? A weird experiment? A problem worth solving? I'd love to talk. Drop me a message below!</p>
+      </div>
+      <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+        <div className="form-row">
+          <div className="form-group">
+            <label>Name</label>
+            <input type="text" placeholder="John Doe" />
+          </div>
+          <div className="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="john@example.com" />
+          </div>
+        </div>
+        <div className="form-group">
+          <label>Message</label>
+          <textarea rows={5} placeholder="Hello, I'd like to talk about..."></textarea>
+        </div>
+        <button type="submit" className="button pink">SEND MESSAGE <Arrow /></button>
+      </form>
+    </section>
     <footer><img src="/aardvark/logo.svg" alt="Aardvark Book Club" /><div><p className="eyebrow">JOIN OUR MAILING LIST</p><div className="email"><input placeholder="Email address" aria-label="Email address" /><button>→</button></div></div><p className="copyright">© 2026 Jaya Patel. All rights reserved.</p></footer>
   </main>
 }
