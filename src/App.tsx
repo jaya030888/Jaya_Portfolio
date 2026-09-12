@@ -30,9 +30,9 @@ export default function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-  return <main>
+  return <main id="top">
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}><a className="brand" href="#top" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}><div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#080909', color: '#F9A220', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '20px' }}>J</div><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}><span style={{ fontWeight: 900, fontSize: '24px', lineHeight: 1, color: '#080909' }}>Jaya Patel</span><span style={{ fontSize: '12px', color: 'rgba(8,9,9,0.7)', fontWeight: 700, letterSpacing: '0.05em', fontFamily: 'var(--font-script, "Gochi Hand", cursive)' }}>Full Stack Developer</span></div></a><nav className={menuOpen ? 'open' : ''}><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a href="#process" onClick={() => setMenuOpen(false)}>Process</a><a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav><a className="login" href="#contact">Let's Talk <Arrow /></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
-    <section className="hero" id="hero"><div className="hero-shapes" /><div className="hero-copy"><h1>WORK.<br />Things I've<br />built.</h1><p>Things I'm building. Things I'm still figuring out. I don't have a perfectly linear path. I've built websites, cloned products, experimented with full-stack systems, worked with APIs, and explored AI. This is a collection of that journey.</p><a href="#chapters" className="button hero-cta">See my work <Arrow /></a></div></section>
+    <section className="hero" id="home"><div className="hero-shapes" /><div className="hero-copy"><h1>WORK.<br />Things I've<br />built.</h1><p>Things I'm building. Things I'm still figuring out. I don't have a perfectly linear path. I've built websites, cloned products, experimented with full-stack systems, worked with APIs, and explored AI. This is a collection of that journey.</p><a href="#work" className="button hero-cta">See my work <Arrow /></a></div></section>
     
     <section className="monthly about-section" id="about">
       <div className="section-intro">
@@ -68,15 +68,15 @@ export default function App() {
         </article>
       </div>
     </section>
-    <section className="monthly" id="chapters" style={{ paddingBottom: '30px' }}><div className="section-intro"><div className="scribble discover">What's cooking</div><div><h2>Currently Building</h2><p>Projects I am actively working on right now.<br />Exploring the intersection of tech and people.</p></div></div><div className="book-grid">{currentlyBuilding.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{book.video ? <video src={book.video} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
+    <section className="monthly" id="work" style={{ paddingBottom: '30px' }}><div className="section-intro"><div className="scribble discover">What's cooking</div><div><h2>Currently Building</h2><p>Projects I am actively working on right now.<br />Exploring the intersection of tech and people.</p></div></div><div className="book-grid">{currentlyBuilding.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{book.video ? <video src={book.video} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
     <section className="monthly" style={{ paddingTop: '30px', paddingBottom: '30px' }}><div className="section-intro"><div><h2>Built & Shipped</h2><p>Projects completed and deployed.<br />Designing for trust and creating full systems.</p></div></div><div className="book-grid">{builtAndShipped.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
     <section className="monthly" style={{ paddingTop: '30px' }}><div className="section-intro"><div><h2>Built To Learn</h2><p>Some projects weren't about building the next big product.<br />They were about figuring something out.</p></div></div><div className="book-grid">{builtToLearn.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
-    <section className="works" id="shift"><div className="works-head"><div><p className="eyebrow">THE PATTERN</p><h2>How I learn.</h2></div><p>That's probably the most accurate description of how I've learned so far.</p></div><div className="steps">{[
+    <section className="works" id="process"><div className="works-head"><div><p className="eyebrow">THE PATTERN</p><h2>How I learn.</h2></div><p>That's probably the most accurate description of how I've learned so far.</p></div><div className="steps">{[
       ['Step #1', 'Build.', 'Start creating. Take an idea and put together the basic pieces to see how they fit.', '/aardvark/step-1.webp'],
       ['Step #2', 'Break.', 'Push the limits. Rip it apart, see what causes errors, and intentionally crash things.', '/aardvark/step-2.webp'],
       ['Step #3', 'Figure it out.', 'The messy part. Read docs, debug, ask questions, and slowly put the puzzle back together.', '/aardvark/step-3.webp'],
       ['Step #4', 'Build again.', 'Take everything learned and build it better, stronger, and more thoughtfully this time.', '/aardvark/step-4.webp'],
-    ].map(([number, title, copy, art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div><a className="button cream" href="#talk">LET'S TALK <Arrow /></a></section>
+    ].map(([number, title, copy, art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
     <section className="box-section" id="talk"><div className="box-copy"><p className="eyebrow">WHAT'S NEXT?</p><h2>The space where<br />technology meets <em>people.</em></h2><p>I'm still exploring where all of that leads. AI. Software. Design. Digital experiences. Research. Marketing. Real-world problems.</p><div className="perks"><span>AI</span><span>Software</span><span>Design</span><span>Research</span><span>Marketing</span></div><a className="button pink" href="#contact">LET'S BUILD SOMETHING <Arrow /></a></div></section>
     
     <section className="monthly testimonials-section" id="testimonials">
@@ -117,24 +117,38 @@ export default function App() {
         <h2>Let's work together.</h2>
         <p>Have an idea? A project? A weird experiment? A problem worth solving? I'd love to talk. Drop me a message below!</p>
       </div>
-      <form className="contact-form" onSubmit={(e) => e.preventDefault()}>
+      <form className="contact-form" onSubmit={(e) => {
+        e.preventDefault();
+        const fd = new FormData(e.currentTarget);
+        const name = fd.get('name') || '';
+        const email = fd.get('email') || '';
+        const message = fd.get('message') || '';
+        const text = `Hi Jaya! I'm ${name} (${email}).\n\n${message}`;
+        window.open(`https://wa.me/917209892701?text=${encodeURIComponent(text)}`, '_blank');
+      }}>
         <div className="form-row">
           <div className="form-group">
             <label>Name</label>
-            <input type="text" placeholder="John Doe" />
+            <input type="text" name="name" placeholder="John Doe" required />
           </div>
           <div className="form-group">
             <label>Email</label>
-            <input type="email" placeholder="john@example.com" />
+            <input type="email" name="email" placeholder="john@example.com" required />
           </div>
         </div>
         <div className="form-group">
           <label>Message</label>
-          <textarea rows={5} placeholder="Hello, I'd like to talk about..."></textarea>
+          <textarea name="message" rows={5} placeholder="Hello, I'd like to talk about..." required></textarea>
         </div>
-        <button type="submit" className="button pink">SEND MESSAGE <Arrow /></button>
+        <button type="submit" className="button pink" style={{ width: '100%' }}>SEND VIA WHATSAPP <Arrow /></button>
       </form>
     </section>
-    <footer><h2 style={{ fontSize: '32px', margin: 0 }}>Jaya Patel</h2><div><p className="eyebrow">LET'S CONNECT</p><div className="email"><input placeholder="Email address" aria-label="Email address" /><button>→</button></div></div><p className="copyright">© 2026 Jaya Patel. All rights reserved.</p></footer>
+    <footer><h2 style={{ fontSize: '32px', margin: 0 }}>Jaya Patel</h2><div><p className="eyebrow">LET'S CONNECT</p><form className="email" onSubmit={(e) => {
+      e.preventDefault();
+      const fd = new FormData(e.currentTarget);
+      const email = fd.get('email') || '';
+      const text = `Hi Jaya! I'd like to connect. My email is: ${email}`;
+      window.open(`https://wa.me/917209892701?text=${encodeURIComponent(text)}`, '_blank');
+    }}><input name="email" type="email" placeholder="Email address" aria-label="Email address" required /><button type="submit">→</button></form></div><p className="copyright">© 2026 Jaya Patel. All rights reserved.</p></footer>
   </main>
 }
