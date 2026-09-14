@@ -24,7 +24,6 @@ function Arrow() { return <span aria-hidden="true">↗</span> }
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [activeFaq, setActiveFaq] = useState<number | null>(0)
   const [scrolled, setScrolled] = useState(false)
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
