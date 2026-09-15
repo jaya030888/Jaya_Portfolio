@@ -15,15 +15,15 @@ import Marquee from './Components/Marquee'
 import HorizontalScrollShowcase from './Components/HorizontalScrollShowcase'
 
 const allProjects = [
-  { title: 'AI Citizen Copilot', tags: ['AI', 'Conversational UX'], description: 'An AI-powered chatbot designed to help citizens navigate information and services.', image: '/ai_citizen_copilot.jpg', video: '', color: '#9580dc' },
-  { title: 'Amiti Healthcare', tags: ['WEB DESIGN', 'DEVELOPMENT'], description: 'A digital experience for a healthcare brand, focused on clear communication.', image: '/amiti.png', color: '#ff9d1c', link: 'https://amitihealthcare.org/' },
-  { title: 'Riyaviz', tags: ['CREATIVE DEVELOPMENT', 'UI/UX'], description: 'An experiment in personal branding and creative web development.', image: '/launchanything.png', color: '#ff008c', link: 'https://riyaviz.me' },
-  { title: 'Student Management System', tags: ['NODE.JS', 'MYSQL'], description: 'A full-stack application for managing student information and interactions.', image: '/iti.png', color: '#6ABF4C', link: 'https://sms-tawny-rho.vercel.app/' },
-  { title: 'Computer-Based Testing', tags: ['Full Stack', 'Database'], description: 'A CBT platform focused on making assessments more structured.', image: '/computer_based_testing.jpg', color: '#38265d' },
-  { title: 'Blinkit Clone', tags: ['HTML', 'CSS', 'JS'], description: 'A Blinkit-inspired e-commerce experience.', image: '/blinkit_clone.png', color: '#F8CB46', link: 'https://blinkit-clone-gold.vercel.app/' },
-  { title: 'Movie Browser', tags: ['REACT', 'API'], description: 'A dynamic movie discovery application integrating with a third-party API.', image: '/movie_browser.png', color: '#E42E2D', link: 'https://movie-browser-plum.vercel.app/' },
-  { title: 'Weather App', tags: [], description: 'Where APIs entered the picture.', image: '/weather.png', color: '#9580dc', link: 'https://jaya030888.github.io/weather/' },
-  { title: 'Quiz Platform', tags: [], description: 'Where interaction became part of the problem.', image: '/quiz_platform.png', color: '#ff008c', link: 'https://online-quiz-platform-seven-peach.vercel.app/' },
+  { title: 'AI Citizen Copilot', tags: ['AI', 'Conversational UX'], description: 'An AI-powered chatbot designed to seamlessly help citizens navigate public information and essential services.', image: '/ai_citizen_copilot.jpg', video: '', color: '#9580dc' },
+  { title: 'Amiti Healthcare', tags: ['WEB DESIGN', 'DEVELOPMENT'], description: 'A comprehensive digital experience for a modern healthcare brand, prioritizing clear communication and accessibility.', image: '/amiti.png', color: '#ff9d1c', link: 'https://amitihealthcare.org/' },
+  { title: 'Riyaviz', tags: ['CREATIVE DEVELOPMENT', 'UI/UX'], description: 'An engaging experiment in personal branding, combining creative web development and modern interactive aesthetics.', image: '/launchanything.png', color: '#ff008c', link: 'https://riyaviz.me' },
+  { title: 'Student Management System', tags: ['NODE.JS', 'MYSQL'], description: 'A robust full-stack application engineered for efficiently managing student information, records, and interactions.', image: '/iti.png', color: '#6ABF4C', link: 'https://sms-tawny-rho.vercel.app/' },
+  { title: 'Computer-Based Testing', tags: ['Full Stack', 'Database'], description: 'A robust computer-based testing platform meticulously focused on making digital assessments highly structured.', image: '/computer_based_testing.jpg', color: '#38265d' },
+  { title: 'Blinkit Clone', tags: ['HTML', 'CSS', 'JS'], description: 'A dynamic e-commerce web application providing a fully responsive and streamlined Blinkit-inspired experience.', image: '/blinkit_clone.png', color: '#F8CB46', link: 'https://blinkit-clone-gold.vercel.app/' },
+  { title: 'Movie Browser', tags: ['REACT', 'API'], description: 'An interactive movie discovery application seamlessly integrating with a comprehensive third-party database API.', image: '/movie_browser.png', color: '#E42E2D', link: 'https://movie-browser-plum.vercel.app/' },
+  { title: 'Weather App', tags: [], description: 'A practical exploration of modern API integrations, delivering reliable live weather data seamlessly to the user.', image: '/weather.png', color: '#9580dc', link: 'https://jaya030888.github.io/weather/' },
+  { title: 'Quiz Platform', tags: [], description: 'A dynamic online platform where complex user interactions and real-time state management became the core focus.', image: '/quiz_platform.png', color: '#ff008c', link: 'https://online-quiz-platform-seven-peach.vercel.app/' },
 ];
 
 function Arrow() { return <span aria-hidden="true" style={{ transition: 'transform 0.2s', display: 'inline-block' }}>↗</span> }
@@ -86,7 +86,7 @@ export default function App() {
                 ))}
               </nav>
               <MagneticButton>
-                <a className="login" href="#contact" data-cursor-text="SAY HI">Let's Talk <Arrow /></a>
+                <a className="login" href="#contact">Let's Talk <Arrow /></a>
               </MagneticButton>
               <button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button>
             </header>
@@ -122,7 +122,7 @@ export default function App() {
                     style={{ marginTop: '30px' }}
                   >
                     <MagneticButton>
-                      <a href="#work" className="button hero-cta" data-cursor-text="SCROLL">See my work <Arrow /></a>
+                      <a href="#work" className="button hero-cta">See my work <Arrow /></a>
                     </MagneticButton>
                   </motion.div>
                 </motion.div>
@@ -156,7 +156,7 @@ export default function App() {
                 ].map((s, i) => (
                   <ScrollReveal key={s.title} direction="up" delay={i * 0.1}>
                     <TiltCard>
-                      <article className="service-card" data-cursor-text="HOVER">
+                      <article className="service-card">
                         <h3>{s.title}</h3>
                         <p>{s.desc}</p>
                       </article>

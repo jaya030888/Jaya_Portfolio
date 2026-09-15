@@ -37,7 +37,7 @@ export default function CustomCursor() {
         setHoverPreview('');
       } else if (previewCursor) {
         setIsHovering(true);
-        setHoverText('VIEW');
+        setHoverText('');
         setHoverPreview(previewCursor.getAttribute('data-cursor-preview') || '');
       } else if (clickable) {
         setIsHovering(true);
