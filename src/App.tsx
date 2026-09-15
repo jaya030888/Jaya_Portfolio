@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { motion, useScroll, useTransform, useSpring, useMotionValueEvent, AnimatePresence } from 'framer-motion'
+import { motion, useScroll, useTransform, useSpring, AnimatePresence } from 'framer-motion'
 import './App.css'
 import SmoothScroll from './Components/SmoothScroll'
 import CustomCursor from './Components/CustomCursor'
@@ -11,7 +11,6 @@ import ScrollProgress from './Components/ScrollProgress'
 import AnimatedText from './Components/AnimatedText'
 import Parallax from './Components/Parallax'
 import ImageReveal from './Components/ImageReveal'
-import Marquee from './Components/Marquee'
 import HorizontalScrollShowcase from './Components/HorizontalScrollShowcase'
 
 const allProjects = [
@@ -34,7 +33,6 @@ export default function App() {
   const [scrolled, setScrolled] = useState(false);
   const [selectedProject, setSelectedProject] = useState<any>(null);
   
-  const { scrollY } = useScroll();
   const heroRef = useRef(null);
   const { scrollYProgress: heroProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroScale = useTransform(heroProgress, [0, 1], [1, 0.8]);

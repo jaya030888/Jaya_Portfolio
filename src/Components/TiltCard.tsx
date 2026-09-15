@@ -1,6 +1,5 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import type { ReactNode } from 'react';
-import { useRef } from 'react';
 
 export default function TiltCard({ children, className }: { children: ReactNode, className?: string }) {
   const x = useMotionValue(0);

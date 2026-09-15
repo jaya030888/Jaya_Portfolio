@@ -1,18 +1,20 @@
 import { motion, useInView } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import { useRef } from 'react';
+import type { ElementType } from 'react';
 
 type AnimatedTextProps = {
   text: string | string[];
-  el?: keyof JSX.IntrinsicElements;
+  el?: ElementType;
   className?: string;
   delay?: number;
 };
 
-const defaultAnimations = {
+const defaultAnimations: Variants = {
   hidden: { y: '120%' },
   visible: { 
     y: 0,
-    transition: { ease: [0.16, 1, 0.3, 1], duration: 1 }
+    transition: { ease: [0.16, 1, 0.3, 1] as [number, number, number, number], duration: 1 }
   },
 };
 
