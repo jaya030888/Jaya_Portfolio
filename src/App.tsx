@@ -15,23 +15,24 @@ const builtAndShipped = [
 const builtToLearn = [
   { title: 'Blinkit Clone', tags: ['HTML', 'CSS', 'JAVASCRIPT'], description: 'A Blinkit-inspired e-commerce experience built to understand how a real-world product handles product discovery, categories, shopping flows and interface design.', image: '/blinkit_clone.png', color: '#F8CB46', link: 'https://blinkit-clone-gold.vercel.app/' },
   { title: 'Movie Browser', tags: ['REACT', 'API', 'UI/UX'], description: 'A dynamic movie discovery application integrating with a third-party API to search, filter, and explore a vast database of films in a clean interface.', image: '/movie_browser.png', color: '#E42E2D', link: 'https://movie-browser-plum.vercel.app/' },
-  { title: 'Todo App', tags: ['HTML', 'CSS', 'JS'], description: 'Where it all started. A simple task tracker to understand the basics of DOM manipulation and state management.', image: '/todo_app.jpg', color: '#ffd955' },
-  { title: 'Weather App', tags: [], description: 'Where APIs entered the picture.', image: '/weather-app-artifact.jpg', color: '#9580dc' },
-  { title: 'Quiz Platform', tags: [], description: 'Where interaction became part of the problem.', image: '/quiz-platform-artifact.jpg', color: '#ff008c' },
-  { title: 'Guess the Number', tags: ['JAVASCRIPT', 'DOM', 'LOGIC'], description: 'A classic logic game built to practice core JavaScript concepts like DOM manipulation, state management, and event handling.', image: '/guess_the_number.jpg', color: '#1B2430' }
+  { title: 'Todo App', tags: ['HTML', 'CSS', 'JS'], description: 'Where it all started. A simple task tracker to understand the basics of DOM manipulation and state management.', image: '/todo.png', color: '#ffd955', link: 'https://my-todo-app-frontend-lo64.vercel.app/' },
+  { title: 'Weather App', tags: [], description: 'Where APIs entered the picture.', image: '/weather.png', color: '#9580dc', link: 'https://jaya030888.github.io/weather/' },
+  { title: 'Quiz Platform', tags: [], description: 'Where interaction became part of the problem.', image: '/quiz_platform.png', color: '#ff008c', link: 'https://online-quiz-platform-seven-peach.vercel.app/' },
+  { title: 'Guess the Number', tags: ['JAVASCRIPT', 'DOM', 'LOGIC'], description: 'A classic logic game built to practice core JavaScript concepts like DOM manipulation, state management, and event handling.', image: '/guess_the_number_new.png', color: '#1B2430', link: 'https://guess-the-number-sandy.vercel.app/' }
 ];
 function Arrow() { return <span aria-hidden="true">↗</span> }
 
 export default function App() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [selectedProject, setSelectedProject] = useState<any>(null)
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
   return <main id="top">
-    <header className={`nav ${scrolled ? 'scrolled' : ''}`}><a className="brand" href="#top" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}><div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#080909', color: '#F9A220', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '20px' }}>J</div><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}><span style={{ fontWeight: 900, fontSize: '24px', lineHeight: 1, color: '#080909' }}>Jaya Patel</span><span style={{ fontSize: '12px', color: 'rgba(8,9,9,0.7)', fontWeight: 700, letterSpacing: '0.05em', fontFamily: 'var(--font-script, "Gochi Hand", cursive)' }}>Full Stack Developer</span></div></a><nav className={menuOpen ? 'open' : ''}><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a href="#process" onClick={() => setMenuOpen(false)}>Process</a><a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav><a className="login" href="#contact">Let's Talk <Arrow /></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`}><a className="brand" href="#top" style={{ display: 'flex', alignItems: 'center', gap: '12px', textDecoration: 'none' }}><div style={{ width: '40px', height: '40px', borderRadius: '50%', backgroundColor: '#080909', color: '#F9A220', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '20px' }}>J</div><div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}><span style={{ fontWeight: 900, fontSize: '24px', lineHeight: 1, color: '#080909' }}>Jaya Patel</span><span style={{ fontSize: '12px', color: 'rgba(8,9,9,0.7)', fontWeight: 700, letterSpacing: '0.05em', fontFamily: 'var(--font-script, "Gochi Hand", cursive)' }}>Full Stack Developer</span></div></a><nav className={menuOpen ? 'open' : ''}><a href="#home" onClick={() => setMenuOpen(false)}>Home</a><a href="#about" onClick={() => setMenuOpen(false)}>About</a><a href="#services" onClick={() => setMenuOpen(false)}>Services</a><a href="#work" onClick={() => setMenuOpen(false)}>Work</a><a href="#journey" onClick={() => setMenuOpen(false)}>Journey</a><a href="#testimonials" onClick={() => setMenuOpen(false)}>Testimonials</a><a href="#contact" onClick={() => setMenuOpen(false)}>Contact</a></nav><a className="login" href="#contact">Let's Talk <Arrow /></a><button className="menu" onClick={() => setMenuOpen(!menuOpen)} aria-label="Open menu">{menuOpen ? '×' : '☰'}</button></header>
     <section className="hero" id="home"><div className="hero-shapes" /><div className="hero-copy"><h1>WORK.<br />Things I've<br />built.</h1><p>Things I'm building. Things I'm still figuring out. I don't have a perfectly linear path. I've built websites, cloned products, experimented with full-stack systems, worked with APIs, and explored AI. This is a collection of that journey.</p><a href="#work" className="button hero-cta">See my work <Arrow /></a></div></section>
     
     <section className="monthly about-section" id="about">
@@ -68,15 +69,44 @@ export default function App() {
         </article>
       </div>
     </section>
-    <section className="monthly" id="work" style={{ paddingBottom: '30px' }}><div className="section-intro"><div className="scribble discover">What's cooking</div><div><h2>Currently Building</h2><p>Projects I am actively working on right now.<br />Exploring the intersection of tech and people.</p></div></div><div className="book-grid">{currentlyBuilding.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties}>{book.video ? <video src={book.video} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
-    <section className="monthly" style={{ paddingTop: '30px', paddingBottom: '30px' }}><div className="section-intro"><div><h2>Built & Shipped</h2><p>Projects completed and deployed.<br />Designing for trust and creating full systems.</p></div></div><div className="book-grid">{builtAndShipped.map((book) => <a href={'link' in book ? book.link as string : '#'} target="_blank" rel="noreferrer" className="book" key={book.title} style={{ '--card': book.color, textDecoration: 'none' } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></a>)}</div></section>
-    <section className="monthly" style={{ paddingTop: '30px' }}><div className="section-intro"><div><h2>Built To Learn</h2><p>Some projects weren't about building the next big product.<br />They were about figuring something out.</p></div></div><div className="book-grid">{builtToLearn.map((book) => <a href={'link' in book ? book.link as string : '#'} target="_blank" rel="noreferrer" className="book" key={book.title} style={{ '--card': book.color, textDecoration: 'none' } as React.CSSProperties}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></a>)}</div></section>
-    <section className="works" id="process"><div className="works-head"><div><p className="eyebrow">THE PATTERN</p><h2>How I learn.</h2></div><p>That's probably the most accurate description of how I've learned so far.</p></div><div className="steps">{[
-      ['Step #1', 'Build.', 'Start creating. Take an idea and put together the basic pieces to see how they fit.', '/aardvark/step-1.webp'],
-      ['Step #2', 'Break.', 'Push the limits. Rip it apart, see what causes errors, and intentionally crash things.', '/aardvark/step-2.webp'],
-      ['Step #3', 'Figure it out.', 'The messy part. Read docs, debug, ask questions, and slowly put the puzzle back together.', '/aardvark/step-3.webp'],
-      ['Step #4', 'Build again.', 'Take everything learned and build it better, stronger, and more thoughtfully this time.', '/aardvark/step-4.webp'],
-    ].map(([number, title, copy, art], index) => <article className={`step-card card-${index + 1}`} key={number}><span className="step-number">{number}</span><img src={art} alt="" /><h3>{title}</h3><p>{copy}</p></article>)}</div></section>
+    <section className="monthly" id="work" style={{ paddingBottom: '30px' }}><div className="section-intro"><div className="scribble discover">What's cooking</div><div><h2>Currently Building</h2><p>Projects I am actively working on right now.<br />Exploring the intersection of tech and people.</p></div></div><div className="book-grid">{currentlyBuilding.map((book) => <article className="book" key={book.title} style={{ '--card': book.color } as React.CSSProperties} onClick={() => setSelectedProject(book)}>{book.video ? <video src={book.video} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
+    <section className="monthly" style={{ paddingTop: '30px', paddingBottom: '30px' }}><div className="section-intro"><div><h2>Built & Shipped</h2><p>Projects completed and deployed.<br />Designing for trust and creating full systems.</p></div></div><div className="book-grid">{builtAndShipped.map((book) => <article className="book" key={book.title} style={{ '--card': book.color, cursor: 'pointer' } as React.CSSProperties} onClick={() => setSelectedProject(book)}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
+    <section className="monthly" style={{ paddingTop: '30px' }}><div className="section-intro"><div><h2>Built To Learn</h2><p>Some projects weren't about building the next big product.<br />They were about figuring something out.</p></div></div><div className="book-grid">{builtToLearn.map((book) => <article className="book" key={book.title} style={{ '--card': book.color, cursor: 'pointer' } as React.CSSProperties} onClick={() => setSelectedProject(book)}>{'video' in book && book.video ? <video src={book.video as string} autoPlay loop muted playsInline poster={book.image} /> : <img src={book.image} alt={book.title} />}<div className="tags">{book.tags.map(tag => <span key={tag}>{tag}</span>)}</div><h3>{book.title}</h3><p>{book.description}</p></article>)}</div></section>
+    <section className="works" id="journey">
+      <div className="works-head">
+        <div>
+          <p className="eyebrow">MY JOURNEY</p>
+          <h2>From learning to building real products.</h2>
+        </div>
+        <p>I started with curiosity about how websites and applications actually work. Over time, that curiosity turned into hands-on development — building projects, breaking things, fixing them, and learning by doing.</p>
+      </div>
+      <div className="timeline">
+        {[
+          { step: '01', title: 'Started Building', description: 'Learned the fundamentals of web development and started creating small projects to understand how frontend and backend systems work together.' },
+          { step: '02', title: 'First Real Projects', description: 'Built projects like a Blinkit-inspired clone, weather applications, quizzes, and other web experiences. These helped me move from tutorials to actually solving problems.' },
+          { step: '03', title: 'Going Beyond UI', description: 'Started working with React, APIs, databases, authentication, and backend development, learning how a complete application works behind the interface.' },
+          { step: '04', title: 'Building Real Systems', description: 'Worked on a CBT examination platform, including the student examination flow, and explored how real-world systems handle users, exams, questions, submissions, and results.' },
+          { step: '05', title: 'Exploring AI', description: 'Started building an AI Copilot chatbot, exploring how AI can be integrated into applications to create more useful and interactive experiences.' },
+          { step: '06', title: 'Where I Am Now', description: "I'm still building, experimenting, and learning — turning ideas into working products and constantly improving how I design and develop them." },
+        ].map((item, index) => (
+          <div className="timeline-item" key={index}>
+            <div className="timeline-dot"></div>
+            <div className="timeline-content">
+              <span className="timeline-year">{item.step}</span>
+              <h3>{item.title}</h3>
+              <p>{item.description}</p>
+            </div>
+          </div>
+        ))}
+        <div className="timeline-item timeline-end">
+          <div className="timeline-dot end-dot"></div>
+          <div className="timeline-content end-content">
+             <h3>Next &rarr;</h3>
+             <p>The journey is still being built.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section className="monthly testimonials-section" id="testimonials">
       <div className="section-intro">
@@ -167,5 +197,23 @@ export default function App() {
       </div>
       <p className="copyright" style={{ marginTop: '70px', width: '100%' }}>© 2026 Jaya Patel. All rights reserved.</p>
     </footer>
+    {selectedProject && (
+      <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
+        <div className="modal-content" style={{ '--card': selectedProject.color } as React.CSSProperties} onClick={(e) => e.stopPropagation()}>
+          <button className="modal-close" onClick={() => setSelectedProject(null)}>×</button>
+          {selectedProject.video ? <video src={selectedProject.video} autoPlay loop muted playsInline poster={selectedProject.image} /> : <img src={selectedProject.image} alt={selectedProject.title} />}
+          <div className="modal-body">
+            <div className="tags">{selectedProject.tags.map((tag: string) => <span key={tag}>{tag}</span>)}</div>
+            <h2>{selectedProject.title}</h2>
+            <p>{selectedProject.description}</p>
+            {selectedProject.link && (
+              <a href={selectedProject.link} target="_blank" rel="noreferrer" className="button pink" style={{ marginTop: '20px' }}>
+                Visit Project <Arrow />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    )}
   </main>
 }
