@@ -1,65 +1,102 @@
-import { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
-const CustomCursor = () => {
-  const cursorRef = useRef<HTMLDivElement>(null);
-  const [cursorText, setCursorText] = useState("");
-  const [isActive, setIsActive] = useState(false);
+export default function CustomCursor() {
+  const [hoverText, setHoverText] = useState('');
+  const [isHovering, setIsHovering] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Exact position for the small dot
+  const mouseX = useMotionValue(-100);
+  const mouseY = useMotionValue(-100);
+
+  // Delayed spring position for the outer ring
+  const springConfig = { damping: 25, stiffness: 300, mass: 0.5 };
+  const ringX = useSpring(mouseX, springConfig);
+  const ringY = useSpring(mouseY, springConfig);
 
   useEffect(() => {
-    const cursor = cursorRef.current;
-    if (!cursor) return;
-
-    // Use GSAP quickTo for highly performant cursor tracking
-    const xTo = gsap.quickTo(cursor, "x", { duration: 0.2, ease: "power3" });
-    const yTo = gsap.quickTo(cursor, "y", { duration: 0.2, ease: "power3" });
+    // Check if mobile/touch
+    if (window.matchMedia('(max-width: 768px)').matches || ('ontouchstart' in window)) {
+      setIsMobile(true);
+      return;
+    }
 
     const moveCursor = (e: MouseEvent) => {
-      xTo(e.clientX);
-      yTo(e.clientY);
-      if (!isActive) setIsActive(true);
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
     };
 
-    const handleMouseLeave = () => setIsActive(false);
-
-    // Interactive element handling
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      const book = target.closest('.book');
+      const clickable = target.closest('a, button, input, textarea');
       
-      const link = target.closest('a, button');
-      const projectCard = target.closest('[data-project-card]');
-
-      if (projectCard) {
-        cursor.classList.add('hovering-project');
-        setCursorText("VIEW");
-      } else if (link) {
-        cursor.classList.add('hovering-link');
-        setCursorText("");
+      if (book) {
+        setIsHovering(true);
+        setHoverText('VIEW');
+      } else if (clickable) {
+        setIsHovering(true);
+        setHoverText('');
       } else {
-        cursor.classList.remove('hovering-link', 'hovering-project');
-        setCursorText("");
+        setIsHovering(false);
+        setHoverText('');
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseout", handleMouseLeave);
-    window.addEventListener("mouseover", handleMouseOver);
+    window.addEventListener('mousemove', moveCursor);
+    document.addEventListener('mouseover', handleMouseOver);
 
     return () => {
-      window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseout", handleMouseLeave);
-      window.removeEventListener("mouseover", handleMouseOver);
+      window.removeEventListener('mousemove', moveCursor);
+      document.removeEventListener('mouseover', handleMouseOver);
     };
-  }, [isActive]);
+  }, [mouseX, mouseY]);
+
+  if (isMobile) return null;
 
   return (
-    <div 
-      ref={cursorRef} 
-      className={`custom-cursor ${isActive ? 'active' : ''}`}
-    >
-      {cursorText && <span className="absolute mix-blend-difference z-50 text-white tracking-widest">{cursorText}</span>}
-    </div>
-  );
-};
+    <>
+      {/* Outer Ring / Hover State */}
+      <motion.div
+        className="cursor-ring"
+        style={{
+          x: ringX,
+          y: ringY,
+        }}
+        animate={{
+          width: isHovering && hoverText ? 80 : isHovering ? 50 : 36,
+          height: isHovering && hoverText ? 80 : isHovering ? 50 : 36,
+          backgroundColor: isHovering && hoverText ? 'var(--pink)' : 'transparent',
+          borderColor: isHovering && hoverText ? 'transparent' : 'var(--ink)',
+          scale: isHovering && !hoverText ? 1.5 : 1
+        }}
+        transition={{ type: 'spring', stiffness: 300, damping: 25 }}
+      >
+        {hoverText && (
+          <motion.span 
+            className="cursor-text"
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+          >
+            {hoverText}
+          </motion.span>
+        )}
+      </motion.div>
 
-export default CustomCursor;
+      {/* Inner Dot */}
+      <motion.div
+        className="cursor-dot"
+        style={{
+          x: mouseX,
+          y: mouseY,
+        }}
+        animate={{
+          opacity: isHovering ? 0 : 1
+        }}
+        transition={{ duration: 0.2 }}
+      />
+    </>
+  );
+}
